@@ -1,0 +1,58 @@
+html,body {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+ul li {
+  margin: 5px 0 5px 0;
+}
+
+span.upDot {
+  font-size: 8pt;
+  color: green;
+  margin-right: 10px;
+}
+
+span.downDot {
+  font-size: 8pt;
+  color: red;
+  margin-right: 10px;
+}
+
+/* TEST MENU STUFF */
+.nodeMenu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    min-width: 150px;
+}
+
+.nodeMenu li {
+  padding: 3px 10px 3px 10px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 10pt;
+}
+
+.nodeMenu li:hover {
+  background: #eeeeee;
+}
+
+.nodeMenu > .contextHeader {
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 5px 10px 5px 10px;
+  display: block;
+  border-bottom: 1px solid #cccccc;
+
+}
