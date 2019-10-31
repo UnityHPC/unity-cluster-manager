@@ -12,6 +12,10 @@
   <li data-vis="up" data-action="off">Shutdown</li>
   <li data-vis="up" data-action="force-reboot">Force Reboot</li>
   <li data-vis="up" data-action="force-off">Force Shutdown</li>
+  <div class='contextDivider'></div>
+  <li data-action="edit">Edit Node</li>
+  <li data-action="clone">Clone Node</li>
+  <li data-action="delete">Delete Node</li>
 </ul>
 
 <?php
@@ -29,18 +33,8 @@ require "../resources/config.php";
 
 <main>
   <section id="leftSide">
-    <?php
-    echo "<ul id='nodes'>";
-    foreach($sql->getNodes() as $node) {
-      $ipNode = new ipmi($node["ipmi"], IPMI["user"], IPMI["pass"]);
-      if ($ipNode->power()) {
-        echo "<li><span class='vertical_center upDot'>&#11044;</span>" . $node["name"] . "</li>";
-      } else {
-        echo "<li><span class='vertical_center downDot'>&#11044;</span>" . $node["name"] . "</li>";
-      }
-    }
-    echo "</ul>";
-    ?>
+    <ul id='nodes'></ul>
+    <div id="newNode">Add Node</div>
   </section>
   <section id="rightSide">
     <h1>Unity Cluster Manager</h1>
@@ -48,6 +42,7 @@ require "../resources/config.php";
   </section>
 </main>
 
-<script src="js/global.js"></script>
 </body>
+
+<script src="js/global.js"></script>
 </html>

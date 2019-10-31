@@ -59,6 +59,8 @@ span.nodeDevice {
   bottom: 0;
   border-right: 1px solid #cccccc;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #rightSide {
@@ -69,6 +71,7 @@ span.nodeDevice {
 }
 
 #nodes {
+  flex: 1 0 auto;
   margin: 0;
   min-width: 200px;
 }
@@ -80,8 +83,12 @@ span.nodeDevice {
   position: relative;
 }
 
-#nodes li.selected {
+#nodes li:hover {
   background: #eeeeee;
+}
+
+#nodes li.selected {
+  background: #dddddd;
 }
 
 #nodeMenu {
@@ -116,6 +123,22 @@ span.nodeDevice {
   display: block;
   border-bottom: 1px solid #cccccc;
 
+}
+
+.contextDivider {
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+}
+
+#newNode {
+  border-top: 1px solid #cccccc;
+  padding: 6px 10px 6px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#newNode:hover {
+  background: #eeeeee;
 }
 
 /*
