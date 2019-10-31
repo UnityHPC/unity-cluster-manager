@@ -53,6 +53,30 @@ span.nodeDevice {
   right: 10px;
 }
 
+div.nodeTabs {
+  width: 100%;
+}
+
+div.nodeTabs {
+  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+}
+
+div.nodeTabs a {
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+div.nodeTabs a:hover {
+  background: #eeeeee;
+}
+
+div.nodeTabs a.selected {
+  background: #dddddd;
+}
+
 #leftSide {
   position: fixed;
   left: 0;

@@ -37,8 +37,7 @@ require "../resources/config.php";
     <div id="newNode">Add Node</div>
   </section>
   <section id="rightSide">
-    <h1>Unity Cluster Manager</h1>
-    <p>Please click on a node to see info</p>
+    <div class='nodeHeader'><span class='nodeName'>Unity Cluster Manager</span></div>
   </section>
 </main>
 

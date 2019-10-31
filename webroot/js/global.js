@@ -50,9 +50,19 @@ window.setInterval(function(){
 }, 15000);
 
 function updateNodeStatus() {
+  var selected = $("#nodes li.selected");
+  if (selected.length > 0) {
+    var selIndex = selected.index();
+  } else {
+    var selIndex = -1;
+  }
+
   $.ajax("js/ajax/node-list.php", {
     success: function(data) {
       $("#nodes").html(data);
+      if (selIndex != -1) {
+        $("#nodes li").eq(selIndex).addClass("selected");
+      }
       nodeFunctions();
     },
     error: function() {

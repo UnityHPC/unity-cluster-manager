@@ -11,7 +11,7 @@ class ipmi {
     $this->pass = $pass;
   }
 
-  private function ipmiTool($cmd) {
+  public function ipmiTool($cmd) {
     return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " " . $cmd);
   }
 
