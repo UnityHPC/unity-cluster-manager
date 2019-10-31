@@ -1,13 +1,20 @@
+// Set Wrapper Dimensions
+$("#leftSide").css("top",$("#mainNav").outerHeight());
+$("#rightSide").css({
+  top: $("#mainNav").outerHeight(),
+  left: $("#leftSide").outerWidth()
+});
+
 // Trigger action when the contexmenu is about to be shown
-$(".nodes li").bind("contextmenu", function (event) {
+$("#nodes li").bind("contextmenu", function (event) {
   // Avoid the real one
   event.preventDefault();
 
-  // Show contextmenu
-  var nodeMenu = $(".nodeMenu");
-  var target = $(event.target);  // Should be the LI
+  $(this).trigger("click");  // Trigger click for selection
 
-  if (target.children("span").hasClass("upDot")) {
+  // Show contextmenu
+  var nodeMenu = $("#nodeMenu");
+  if ($(this).children("span").hasClass("upDot")) {
     // Node is Up
     nodeMenu.children("[data-vis=down]").hide();
     nodeMenu.children("[data-vis=up]").show();
@@ -17,8 +24,8 @@ $(".nodes li").bind("contextmenu", function (event) {
     nodeMenu.children("[data-vis=up]").hide();
   }
 
-  var nodeText = target.clone().children().remove().end().text();
-  nodeMenu.find(".contextHeader").html(target.html());
+  var nodeText = $(this).clone().children().remove().end().text();
+  nodeMenu.find(".contextHeader").html($(this).html());
   nodeMenu.attr("node", nodeText);
   nodeMenu.finish().toggle();
 
@@ -29,18 +36,32 @@ $(".nodes li").bind("contextmenu", function (event) {
   });
 });
 
+$("#nodes li").bind("click", function(event) {
+  $(this).parent().find("*").removeClass("selected");
+  $(this).addClass("selected");
+
+  //ajax php script
+  $.ajax("js/ajax/node-info.php?node=" + $(this).clone().children().remove().end().text(), {
+    success: function(data) {
+      $("#rightSide").html(data); // Update Main
+    },
+    error: function() {
+      alert("AJAX call failed!");
+    }
+  });
+});
 
 // If the document is clicked somewhere
 $(document).bind("mousedown", function (e) {
   // If the clicked element is not the menu
-  if (!$(e.target).parents(".nodeMenu").length > 0) {
+  if (!$(e.target).parents("#nodeMenu").length > 0) {
     // Hide it
-    $(".nodeMenu").hide();
+    $("#nodeMenu").hide();
   }
 });
 
 // If the menu element is clicked
-$(".nodeMenu li").click(function() {
+$("#nodeMenu li").click(function() {
 
   var nodeName = $(this).parent().attr("node");
   // This is the triggered action name
@@ -54,7 +75,7 @@ $(".nodeMenu li").click(function() {
   }
 
   // Hide it AFTER the action was triggered
-  $(".nodeMenu").hide();
+  $("#nodeMenu").hide();
 });
 
 function setNodePower(state, node, hard=false) {

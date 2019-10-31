@@ -7,7 +7,7 @@ if (!isset($_GET["state"]) || !isset($_GET["node"])) {
 }
 
 $hard = isset($_GET["hard"]) && $_GET["hard"] == "true";
-$ipmi = new ipmi(NODES[$_GET["node"]]["ipmi"],IPMI["user"],IPMI["pass"]);
+$ipmi = new ipmi($sql->getNode($_GET["node"])["ipmi"],IPMI["user"],IPMI["pass"]);
 
 if (!$ipmi->power($_GET["state"], $hard)) {
   die("Error setting state " . $_GET["state"]);

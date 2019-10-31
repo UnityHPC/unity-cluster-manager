@@ -1,10 +1,12 @@
 html,body {
   font-family: sans-serif;
+  font-size: 11pt;
+  margin: 0;
 }
 
 ul {
   list-style: none;
-  padding-left: 20px;
+  padding: 0;
 }
 
 ul li {
@@ -12,19 +14,77 @@ ul li {
 }
 
 span.upDot {
-  font-size: 8pt;
+  font-size: 9pt;
   color: green;
-  margin-right: 10px;
+  margin: 0 10px 0 -20px;
 }
 
 span.downDot {
-  font-size: 8pt;
+  font-size: 9pt;
   color: red;
-  margin-right: 10px;
+  margin: 0 10px 0 -20px;
 }
 
-/* TEST MENU STUFF */
-.nodeMenu {
+.vertical_center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+main {
+  width: 100%;
+}
+
+div.nodeHeader {
+  padding: 10px;
+  margin: 0;
+  background: #eeeeee;
+  position: relative;
+}
+
+span.nodeName {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+span.nodeDevice {
+  font-size: 11pt;
+  color: #999999;
+  right: 10px;
+}
+
+#leftSide {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid #cccccc;
+  overflow-y: auto;
+}
+
+#rightSide {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+#nodes {
+  margin: 0;
+  min-width: 200px;
+}
+
+#nodes li {
+  cursor: pointer;
+  margin: 0;
+  padding: 4px 10px 4px 30px;
+  position: relative;
+}
+
+#nodes li.selected {
+  background: #eeeeee;
+}
+
+#nodeMenu {
     display: none;
     z-index: 1000;
     position: absolute;
@@ -37,22 +97,48 @@ span.downDot {
     min-width: 150px;
 }
 
-.nodeMenu li {
+#nodeMenu li {
   padding: 3px 10px 3px 10px;
   margin: 0;
   cursor: pointer;
   font-size: 10pt;
 }
 
-.nodeMenu li:hover {
+#nodeMenu li:hover {
   background: #eeeeee;
 }
 
-.nodeMenu > .contextHeader {
+#nodeMenu > .contextHeader {
+  position: relative;
   font-weight: bold;
   font-size: 11pt;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 30px;
   display: block;
   border-bottom: 1px solid #cccccc;
 
+}
+
+/*
+*/
+
+#mainNav {
+  font-size: 0;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+#mainNav a {
+  font-size: 11pt;
+  text-decoration: none;
+  padding: 5px 10px 5px 10px;
+  color: #1a1a1a;
+  display: inline-block;
+}
+
+#mainNav a:hover {
+  background: #eeeeee;
 }

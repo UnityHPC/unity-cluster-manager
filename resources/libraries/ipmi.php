@@ -11,23 +11,45 @@ class ipmi {
     $this->pass = $pass;
   }
 
+  private function ipmiTool($cmd) {
+    return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " " . $cmd);
+  }
+
   public function power($state = "status", $hard = false) {
     switch($state) {
       case "on":
-      return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " chassis power on") === "Chassis Power Control: Up/On\n";
+      return $this->ipmiTool("chassis power on") === "Chassis Power Control: Up/On\n";
 
       case "off":
-      return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " chassis power off") === "Chassis Power Control: Down/Off\n";
+      return $this->ipmiTool("chassis power off") === "Chassis Power Control: Down/Off\n";
 
       case "reboot":
-      return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " chassis power cycle") === "Chassis Power Control: Cycle\n";
+      return $this->ipmiTool("chassis power cycle") === "Chassis Power Control: Cycle\n";
 
       case "status":
-      return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " chassis power status") === "Chassis Power is on\n";
+      return $this->ipmiTool("chassis power status") === "Chassis Power is on\n";
 
       default:
       return false;
     }
+  }
+
+  public function getFRU($id, $attr=NULL) {
+    $cmd = "fru print " . $id;
+    if (!is_null($attr)) {
+      $cmd .= " | grep -i \"$attr\"";
+    }
+
+    $output = $this->ipmiTool($cmd);
+    if (!is_null($attr)) {
+      return substr($output, strpos($output, ": ") + 1);
+    } else {
+      return $output;
+    }
+  }
+
+  public function getSensor($sensor) {
+    return $this->ipmiTool("sdr get \"" + $sensor . "\"");
   }
 }
 
