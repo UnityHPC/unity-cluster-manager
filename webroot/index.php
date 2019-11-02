@@ -17,11 +17,13 @@ require "../resources/templates/header.php";
 
 <main>
   <section id="leftSide">
-    <ul id='nodes'></ul>
+    <ul id='leftList' data-ajax='js/ajax/node.php'></ul>
     <div id="newNode">Add Node</div>
   </section>
   <section id="rightSide"></section>
 </main>
+
+<div id="oldSessions"></div>
 
 <?php
 require "../resources/templates/footer.php";

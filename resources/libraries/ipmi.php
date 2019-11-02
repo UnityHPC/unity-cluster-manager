@@ -51,6 +51,14 @@ class ipmi {
   public function getSensor($sensor) {
     return $this->ipmiTool("sdr get \"" + $sensor . "\"");
   }
+
+  public function sol($setting) {
+    if ($setting) {
+      $this->ipmiTool("sol activate");
+    } else {
+      $this->ipmiTool("sol deactivate");
+    }
+  }
 }
 
 ?>

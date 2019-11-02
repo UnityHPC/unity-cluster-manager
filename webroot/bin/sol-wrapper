@@ -4,10 +4,10 @@
 #
 export TERM=xterm
 
-UCM_IPMI_NAME=$(echo `cat tmp/solPrefs | grep node` | cut -d ":" -f 2)
-UCM_IPMI_HOST=$(echo `cat tmp/solPrefs | grep host` | cut -d ":" -f 2)
-UCM_IPMI_USER=$(echo `cat tmp/solPrefs | grep user` | cut -d ":" -f 2)
-UCM_IPMI_PASS=$(echo `cat tmp/solPrefs | grep pass` | cut -d ":" -f 2)
+UCM_IPMI_NAME=$1
+UCM_IPMI_HOST=$2
+UCM_IPMI_USER=$3
+UCM_IPMI_PASS=$4
 
 while true; do
   read -p "Press enter to start a serial connection to $UCM_IPMI_NAME..."
@@ -22,8 +22,11 @@ while true; do
       ipmitool -I lanplus -H $UCM_IPMI_HOST -U $UCM_IPMI_USER -P $UCM_IPMI_PASS sol deactivate
       ipmitool -I lanplus -H $UCM_IPMI_HOST -U $UCM_IPMI_USER -P $UCM_IPMI_PASS sol activate
     else
-      exit
+      clear
+      continue
     fi
   fi
+
   clear
+  echo "The serial connection has been closed."
 done

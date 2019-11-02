@@ -6,5 +6,4 @@
 
 $module_title = "Info";
 echo "<pre>" . $ipmi->getFRU(0) . "</pre>";
-echo "<pre>" . $ipmi->ipmiTool("sdr") . "</pre>";
 ?>

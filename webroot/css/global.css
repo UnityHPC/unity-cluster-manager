@@ -144,6 +144,10 @@ div.pageModule {
   overflow: auto;
 }
 
+#oldSessions {
+  display: none !important;
+}
+
 /* Serial-Over-Lan */
 iframe.serial {
   border: 0;
@@ -153,25 +157,25 @@ iframe.serial {
 }
 
 /* NODE LIST */
-#nodes {
+#leftList {
   margin: 0;
   min-width: 200px;
   list-style: none;
   padding: 0;
 }
 
-#nodes li {
+#leftList li {
   cursor: pointer;
   margin: 0;
   padding: 4px 10px 4px 30px;
   position: relative;
 }
 
-#nodes li:hover {
+#leftList li:hover {
   background: #eeeeee;
 }
 
-#nodes li.selected {
+#leftList li.selected {
   background: #dddddd;
 }
 
