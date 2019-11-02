@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Environment vars must already be set
+#
+
+UCM_IPMI_HOST=$(echo `cat tmp/solPrefs | grep host` | cut -d ":" -f 2)
+UCM_IPMI_USER=$(echo `cat tmp/solPrefs | grep user` | cut -d ":" -f 2)
+UCM_IPMI_PASS=$(echo `cat tmp/solPrefs | grep pass` | cut -d ":" -f 2)
+
+echo "Connecting to $UCM_IPMI_HOST..."
+ipmitool -I lanplus -H $UCM_IPMI_HOST -U $UCM_IPMI_USER -P $UCM_IPMI_PASS sol activate
+if [ $? -ne 0 ]; then
+  echo -n "Deactivate existing connection [y,n]? "
+  read deac
+  if [ "$deac" = "y" ]; then
+    ipmitool -I lanplus -H $UCM_IPMI_HOST -U $UCM_IPMI_USER -P $UCM_IPMI_PASS sol deactivate
+    ipmitool -I lanplus -H $UCM_IPMI_HOST -U $UCM_IPMI_USER -P $UCM_IPMI_PASS sol activate
+  else
+    exit
+  fi
+fi

@@ -1,11 +1,8 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="css/global.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
-<body>
+<?php
+require "../resources/templates/header.php";
+?>
 
-<ul id='nodeMenu'>
+<ul id='nodeMenu' class='contextMenu'>
   <span class='contextHeader'></span>
   <li data-vis="down" data-action="on">Power On</li>
   <li data-vis="up" data-action="reboot">Reboot</li>
@@ -18,30 +15,14 @@
   <li data-action="delete">Delete Node</li>
 </ul>
 
-<?php
-require "../resources/config.php";
-?>
-
-<nav id="mainNav">
-  <a href="#">Nodes</a>
-  <a href="#">Users</a>
-  <a href="#">Images</a>
-  <a href="#">Option 2</a>
-  <a href="#">Option 3</a>
-  <a href="#">Option 4</a>
-</nav>
-
 <main>
   <section id="leftSide">
     <ul id='nodes'></ul>
     <div id="newNode">Add Node</div>
   </section>
-  <section id="rightSide">
-    <div class='nodeHeader'><span class='nodeName'>Unity Cluster Manager</span></div>
-  </section>
+  <section id="rightSide"></section>
 </main>
 
-</body>
-
-<script src="js/global.js"></script>
-</html>
+<?php
+require "../resources/templates/footer.php";
+?>

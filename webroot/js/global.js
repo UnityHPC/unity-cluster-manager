@@ -1,16 +1,12 @@
 // Set Wrapper Dimensions
-$("#leftSide").css("top",$("#mainNav").outerHeight());
-$("#rightSide").css({
-  top: $("#mainNav").outerHeight(),
-  left: $("#leftSide").outerWidth()
-});
+$("#leftSide").css("top", $("#topNav").outerHeight());
 
 // If the document is clicked somewhere
 $(document).on("mousedown", function (e) {
   // If the clicked element is not the menu
-  if (!$(e.target).parents("#nodeMenu").length > 0) {
+  if (!$(e.target).parents(".contextMenu").length > 0) {
     // Hide it
-    $("#nodeMenu").hide();
+    $(".contextMenu").hide();
   }
 });
 
@@ -107,13 +103,43 @@ function nodeFunctions() {
     $(this).addClass("selected");
 
     //ajax php script
-    $.ajax("js/ajax/node-info.php?node=" + $(this).clone().children().remove().end().text(), {
+    $.ajax("js/ajax/node.php?node=" + $(this).clone().children().remove().end().text(), {
       success: function(data) {
         $("#rightSide").html(data); // Update Main
+        pageViewFunctions();
+        nodeViewFunctions();
+        $(".pageTabs a:first-child").trigger("click");
       },
       error: function() {
         alert("AJAX call failed!");
       }
     });
+  });
+}
+
+function nodeViewFunctions() {
+  $("iframe.serial").css("padding-top", $("#topSOL").outerHeight());
+}
+
+function pageViewFunctions() {
+  $(".pageModule").hide();
+
+  $(".pageTabs a").on("click", function() {
+    $(".pageModule").hide();
+    $(this).parent().children().removeClass("selected");
+
+    var divText = $(this).text().replace(" ", "_");
+    $("[data-module=" + divText + "].pageModule").show();
+    $(this).addClass("selected");
+  });
+
+  $("#pageTop").css({
+    top: $("#topNav").outerHeight(),
+    left: $("#leftSide").outerWidth()
+  });
+
+  $("div.pageModule").css({
+    top: $("#topNav").outerHeight() + $("#pageTop").outerHeight(),
+    left: $("#leftSide").outerWidth()
   });
 }

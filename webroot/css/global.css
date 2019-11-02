@@ -1,28 +1,12 @@
+/* GLOBALS */
 html,body {
   font-family: sans-serif;
   font-size: 11pt;
   margin: 0;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 5px 0 5px 0;
-}
-
-span.upDot {
-  font-size: 9pt;
-  color: green;
-  margin: 0 10px 0 -20px;
-}
-
-span.downDot {
-  font-size: 9pt;
-  color: red;
-  margin: 0 10px 0 -20px;
+main {
+  width: 100%;
 }
 
 .vertical_center {
@@ -31,52 +15,7 @@ span.downDot {
   transform: translateY(-50%);
 }
 
-main {
-  width: 100%;
-}
-
-div.nodeHeader {
-  padding: 10px;
-  margin: 0;
-  background: #eeeeee;
-  position: relative;
-}
-
-span.nodeName {
-  font-size: 16pt;
-  font-weight: bold;
-}
-
-span.nodeDevice {
-  font-size: 11pt;
-  color: #999999;
-  right: 10px;
-}
-
-div.nodeTabs {
-  width: 100%;
-}
-
-div.nodeTabs {
-  border-bottom: 1px solid #cccccc;
-  border-top: 1px solid #cccccc;
-}
-
-div.nodeTabs a {
-  display: inline-block;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-  color: #1a1a1a;
-}
-
-div.nodeTabs a:hover {
-  background: #eeeeee;
-}
-
-div.nodeTabs a.selected {
-  background: #dddddd;
-}
-
+/* SECTIONS */
 #leftSide {
   position: fixed;
   left: 0;
@@ -87,17 +26,146 @@ div.nodeTabs a.selected {
   flex-direction: column;
 }
 
-#rightSide {
+/* CONTEXT MENU */
+.contextMenu {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  min-width: 150px;
+}
+
+.contextMenu li {
+  padding: 3px 10px 3px 10px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 10pt;
+}
+
+.contextMenu li:hover {
+  background: #eeeeee;
+}
+
+.contextMenu > .contextHeader {
+  position: relative;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 5px 10px 5px 30px;
+  display: block;
+  border-bottom: 1px solid #cccccc;
+}
+
+.contextMenu > .contextDivider {
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+}
+
+/* NAVBAR */
+#topNav {
+  font-size: 0;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+#topNav a {
+  font-size: 11pt;
+  text-decoration: none;
+  padding: 5px 10px 5px 10px;
+  color: #1a1a1a;
+  display: inline-block;
+}
+
+#topNav a:hover {
+  background: #eeeeee;
+}
+
+/* PAGE HEADER */
+#pageTop {
+  position: fixed;
+  right: 0;
+}
+
+#pageHeader {
+  padding: 10px;
+  margin: 0;
+  background: #eeeeee;
+  position: relative;
+}
+
+#pageHeader span.pageTitle {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+#pageHeader span.nodeDevice {
+  font-size: 11pt;
+  color: #999999;
+  right: 10px;
+}
+
+/* PAGE TABS */
+div.pageTabs {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+}
+
+div.pageTabs a {
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+div.pageTabs a:hover {
+  background: #eeeeee;
+}
+
+div.pageTabs a.selected {
+  background: #dddddd;
+}
+
+/* PAGE MAIN */
+div.pageModule {
   position: fixed;
   bottom: 0;
   right: 0;
-  overflow-y: auto;
+  overflow: auto;
 }
 
+/* Serial-Over-Lan */
+iframe.serial {
+  border: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#topSOL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: gray;
+}
+
+/* NODE LIST */
 #nodes {
-  flex: 1 0 auto;
   margin: 0;
   min-width: 200px;
+  list-style: none;
+  padding: 0;
 }
 
 #nodes li {
@@ -115,50 +183,27 @@ div.nodeTabs a.selected {
   background: #dddddd;
 }
 
-#nodeMenu {
-    display: none;
-    z-index: 1000;
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid #cccccc;
-    white-space: nowrap;
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    min-width: 150px;
+span.upDot {
+  font-size: 9pt;
+  color: green;
+  margin: 0 10px 0 -20px;
 }
 
-#nodeMenu li {
-  padding: 3px 10px 3px 10px;
-  margin: 0;
-  cursor: pointer;
-  font-size: 10pt;
-}
-
-#nodeMenu li:hover {
-  background: #eeeeee;
-}
-
-#nodeMenu > .contextHeader {
-  position: relative;
-  font-weight: bold;
-  font-size: 11pt;
-  padding: 5px 10px 5px 30px;
-  display: block;
-  border-bottom: 1px solid #cccccc;
-
-}
-
-.contextDivider {
-  width: 100%;
-  border-bottom: 1px solid #cccccc;
+span.downDot {
+  font-size: 9pt;
+  color: red;
+  margin: 0 10px 0 -20px;
 }
 
 #newNode {
   border-top: 1px solid #cccccc;
   padding: 6px 10px 6px 10px;
   cursor: pointer;
-  flex-shrink: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
 }
 
 #newNode:hover {
@@ -167,25 +212,3 @@ div.nodeTabs a.selected {
 
 /*
 */
-
-#mainNav {
-  font-size: 0;
-  background: #ffffff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-bottom: 1px solid #cccccc;
-}
-
-#mainNav a {
-  font-size: 11pt;
-  text-decoration: none;
-  padding: 5px 10px 5px 10px;
-  color: #1a1a1a;
-  display: inline-block;
-}
-
-#mainNav a:hover {
-  background: #eeeeee;
-}
