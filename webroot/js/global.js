@@ -107,7 +107,6 @@ function nodeFunctions() {
       success: function(data) {
         $("#rightSide").html(data); // Update Main
         pageViewFunctions();
-        nodeViewFunctions();
         $(".pageTabs a:first-child").trigger("click");
       },
       error: function() {
@@ -115,10 +114,6 @@ function nodeFunctions() {
       }
     });
   });
-}
-
-function nodeViewFunctions() {
-  $("iframe.serial").css("padding-top", $("#topSOL").outerHeight());
 }
 
 function pageViewFunctions() {

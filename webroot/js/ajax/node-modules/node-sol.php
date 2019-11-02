@@ -13,11 +13,11 @@ if (shell_exec("ps aux | grep '[g]otty -w -p 9556'") == "") {
 
 // Set Environment Vars
 $solPrefs = fopen("tmp/solPrefs", "w");
+fwrite($solPrefs, "node:" . $_GET["node"] . "\n");
 fwrite($solPrefs, "host:" . $sql->getNode($_GET["node"])["ipmi"] . "\n");
 fwrite($solPrefs, "user:" . IPMI["user"] . "\n");
 fwrite($solPrefs, "pass:" . IPMI["pass"] . "\n");
 fclose($solPrefs);
 
-echo "<div id='topSOL'>Test</div>";
 echo "<iframe class='serial' src='/tty/' scrolling='auto'></iframe>";
 ?>

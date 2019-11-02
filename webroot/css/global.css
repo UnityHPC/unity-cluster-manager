@@ -152,14 +152,6 @@ iframe.serial {
   height: 100%;
 }
 
-#topSOL {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: gray;
-}
-
 /* NODE LIST */
 #nodes {
   margin: 0;
