@@ -77,19 +77,20 @@ window.setInterval(function(){
 }, 15000);
 
 function updateNodeStatus() {
-  var selected = $("#leftList li.selected");
-  if (selected.length > 0) {
-    var selIndex = selected.index();
-  } else {
-    var selIndex = -1;
-  }
-
   $.ajax("js/ajax/node-list.php", {
     success: function(data) {
+      var selected = $("#leftList li.selected");
+      if (selected.length > 0) {
+        var selIndex = selected.index();
+      } else {
+        var selIndex = -1;
+      }
+
       $("#leftList").html(data);
       if (selIndex != -1) {
         $("#leftList li").eq(selIndex).addClass("selected");
       }
+
       leftListFunctions();
       nodeListFunctions();
     },
