@@ -1,18 +1,28 @@
 <?php
 
+class ipmi_ucm extends ipmi {
+  const IPMITOOL = BIN["IPMITOOL"];
+
+  public function __construct($ip, $user, $pass) {
+    parent::__construct($ip, $user, $pass, self::IPMITOOL);
+  }
+}
+
 class ipmi {
   private $ip;
   private $user;
   private $pass;
+  private $ipmitool;
 
-  public function __construct($ip, $user, $pass) {
+  public function __construct($ip, $user, $pass, $ipmitool) {
     $this->ip = $ip;
     $this->user = $user;
     $this->pass = $pass;
+    $this->ipmitool = $ipmitool;
   }
 
   public function ipmiTool($cmd) {
-    return shell_exec("ipmitool -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " " . $cmd);
+    return shell_exec($this->ipmitool . " -I lanplus -H " . $this->ip . " -U " . $this->user . " -P " . $this->pass . " " . $cmd);
   }
 
   public function power($state = "status", $hard = false) {

@@ -1,5 +1,14 @@
 <?php
 
+define("HTTP_LOCATION", "/opt/http/ucm/");
+
+define("BIN", array(
+  "IPMITOOL" => HTTP_LOCATION . "bin/ipmitool",
+  "IPMIEVD" => HTTP_LOCATION . "bin/ipmievd",
+  "GOTTY" => HTTP_LOCATION . "bin/gotty",
+  "SOL_WRAPPER" => HTTP_LOCATION . "bin/sol-wrapper"
+));
+
 define("SQL", array(
   "host" => "127.0.0.1",
   "user" => "ucm",

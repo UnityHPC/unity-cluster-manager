@@ -6,7 +6,7 @@ if (!isset($_GET["node"])) {
   die("Required parameter is node");
 }
 
-$ipmi = new ipmi($sql->getNode($_GET["node"])["ipmi"],IPMI["user"],IPMI["pass"]);
+$ipmi = new ipmi_ucm($sql->getNode($_GET["node"])["ipmi"],IPMI["user"],IPMI["pass"]);
 $ipmi->sol(false);  // Deactivate SOL
 
 ?>

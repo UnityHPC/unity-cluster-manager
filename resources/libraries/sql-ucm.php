@@ -33,7 +33,7 @@ class sql {
   }
 
   public function getNodes() {
-    return $this->conn->query("SELECT * FROM " . self::tables["nodes"])->fetchAll();
+    return $this->conn->query("SELECT * FROM " . self::tables["nodes"] . " ORDER BY sticky DESC, name ASC")->fetchAll();
   }
 
   public function getNode($name) {

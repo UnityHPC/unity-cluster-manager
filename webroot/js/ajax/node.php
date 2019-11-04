@@ -7,7 +7,7 @@ if (!isset($_GET["page"])) {
 
 $node = $_GET["page"];
 
-$ipmi = new ipmi($sql->getNode($node)["ipmi"],IPMI["user"],IPMI["pass"]);
+$ipmi = new ipmi_ucm($sql->getNode($node)["ipmi"],IPMI["user"],IPMI["pass"]);
 $modules = array();
 
 echo "<header id='pageTop'>";
