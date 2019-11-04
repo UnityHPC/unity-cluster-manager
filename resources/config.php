@@ -1,12 +1,12 @@
 <?php
 
-define("HTTP_LOCATION", "/opt/http/ucm/");
+define("SITE_LOCATION", str_replace("resources/config.php", "", __FILE__));  // if the location of config.php changes, this line must be changed
 
 define("BIN", array(
-  "IPMITOOL" => HTTP_LOCATION . "bin/ipmitool",
-  "IPMIEVD" => HTTP_LOCATION . "bin/ipmievd",
-  "GOTTY" => HTTP_LOCATION . "bin/gotty",
-  "SOL_WRAPPER" => HTTP_LOCATION . "bin/sol-wrapper"
+  "IPMITOOL" => SITE_LOCATION . "bin/ipmitool",
+  "IPMIEVD" => SITE_LOCATION . "bin/ipmievd",
+  "GOTTY" => SITE_LOCATION . "bin/gotty",
+  "SOL_WRAPPER" => SITE_LOCATION . "bin/sol-wrapper"
 ));
 
 define("SQL", array(
