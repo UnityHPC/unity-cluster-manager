@@ -1,0 +1,37 @@
+.contextMenu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    min-width: 150px;
+}
+
+.contextMenu li {
+    padding: 3px 10px 3px 10px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 10pt;
+}
+
+.contextMenu li:hover {
+    background: #eeeeee;
+}
+
+.contextMenu>.contextHeader {
+    position: relative;
+    font-weight: bold;
+    font-size: 11pt;
+    padding: 5px 10px 5px 30px;
+    display: block;
+    border-bottom: 1px solid #cccccc;
+}
+
+.contextMenu>.contextDivider {
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+}

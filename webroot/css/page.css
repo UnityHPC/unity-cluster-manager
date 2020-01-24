@@ -1,0 +1,120 @@
+/* GLOBALS */
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+div.mainWrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  min-height: 0; /* Some firefox issue requires this */
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Main Nav */
+#foot_nav {
+  display: inline-block;
+  background: var(--color_main);
+  font-size: 0;
+  border-top: 1px solid var(--color_main_2);
+  background: var(--color_main_1);
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+#foot_nav a {
+  display: inline-block;
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+  font-size: 11pt;
+  text-decoration: none;
+  color: var(--color_foreground);
+}
+
+#foot_nav a:hover {
+  background: var(--color_main_2);
+}
+
+#foot_nav a.rightBtn {
+  float: right;
+}
+
+/* Wrappers */
+aside.leftSide {
+  min-width: 250px;
+  height: 100%;
+  background: var(--color_main);
+  border-right: 1px solid var(--color_main_2);
+  flex: 0 0 auto;
+  min-height: 0; /* for firefox */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+aside.leftSide > ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+aside.leftSide > ul li {
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
+aside.leftSide > ul li:hover {
+  background: var(--color_main_1);
+}
+
+main.rightSide {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {  /* Stack list and panel if screen is small */
+  div.mainWrapper {
+    flex-direction: column;
+  }
+
+  aside.leftSide {
+    flex: 0 0 250px;
+  }
+}
+
+/* Inner Page */
+div.pageHeader {
+  border-bottom: 1px solid var(--color_main_1);
+  background: var(--color_main_1);
+  height: 40px;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+span.pageTitle {
+  font-weight: bold;
+  padding: 10px;
+  font-size: 13pt;
+}
+
+span.pageDesc {
+  right: 15px;
+  color: var(--color_main_2);
+}
+
+div.pageWrapper {
+  padding: 10px;
+  flex: 1 1 0;
+  overflow-y: auto;
+}
