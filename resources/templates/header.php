@@ -10,6 +10,7 @@ require_once "../resources/config.php";
 
     <link rel="stylesheet" type="text/css" href="css/light.css">
     <link rel="stylesheet" type="text/css" href="css/page.css">
+    <link rel="stylesheet" type="text/css" href="css/dialog.css">
     <link rel="stylesheet" type="text/css" href="css/context-menu.css">
 </head>
 
